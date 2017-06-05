@@ -5,11 +5,11 @@
     do_token: "{{ lookup('env', 'DIGITAL_OCEAN_API_TOKEN') }}"
 
   tasks:
-    - name: Ensure key exists at DigitalOcean
-      digital_ocean:
-        state: present
-        command: ssh
-        name: my_ssh_key
-        ssh_pub_key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
-        api_token: do_token
+    - name: ensure key exists at DigitalOcean
+      digital_ocean: >
+        state=present
+        command=ssh
+        name=my_ssh_key
+        ssh_pub_key={{ lookup('file', '~/.ssh/id_rsa.pub') }}
+        api_token={{ do_token }}
       register: my_ssh_key
