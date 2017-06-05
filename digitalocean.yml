@@ -1,0 +1,7 @@
+---
+- hosts: digitalocean
+
+  vars:
+    do_token: lookup('env', 'DIGITAL_OCEAN_API_TOKEN')
+
+  tasks:
